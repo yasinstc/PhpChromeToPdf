@@ -1,7 +1,7 @@
 <?php
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 //in this example we will put output in default output directory of library
 

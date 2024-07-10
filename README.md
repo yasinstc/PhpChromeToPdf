@@ -1,10 +1,6 @@
 PHP ChromeToPdf
 ===============
 
-[![Latest Stable Version](https://poser.pugx.org/dawood/phpchromepdf/v/stable.svg)](https://packagist.org/packages/dawood/phpchromepdf)
-[![Total Downloads](https://poser.pugx.org/dawood/phpchromepdf/downloads)](https://packagist.org/packages/dawood/phpchromepdf)
-[![License](https://poser.pugx.org/dawood/phpchromepdf/license.svg)](https://packagist.org/packages/dawood/phpchromepdf)
-
 
 PHP ChromeToPdf provides a simple and clean interface to ease PDF and image creation with
 [Google Chrome](https://www.google.com/chrome/). **The `Google Chrome`
@@ -15,11 +11,11 @@ must be installed and working on your system.** See the section below for detail
 Every time i had convert url to pdf or to take screenshot of some url
 i had to install several libraries , i know there are very good libraries available
 like phantomJs,wkhtmltopdf and some others...
-but there are always rendering issue  
-like some supports **bootstrap** ,some not some time **html5 problem** etc..  
+but there are always rendering issue
+like some supports **bootstrap** ,some not some time **html5 problem** etc..
 and this was all annoying
-so i decided to make this little wrapper around chrome  
-by using chrome results i achieved following results.  
+so i decided to make this little wrapper around chrome
+by using chrome results i achieved following results.
 * **No more css issues (bootstrap,css3 )**
 * **No more html5 issues**
 * **No more need to use xvfb**
@@ -31,7 +27,7 @@ by using chrome results i achieved following results.
 This package supports Laravel. Install it in a Laravel application as follows:
 
 ```
-composer require dawood/phpchromepdf
+composer require yasinstc/phpchromepdf
 ```
 
 done.
@@ -41,7 +37,7 @@ done.
 Install the package through [composer](http://getcomposer.org):
 
 ```
-composer require dawood/phpchromepdf
+composer require yasinstc/phpchromepdf
 ```
 
 Make sure, that you include the composer [autoloader](https://getcomposer.org/doc/01-basic-usage.md#autoloading)
@@ -55,7 +51,7 @@ There are several examples provided in examples folder too
 
 ```php
 
-use dawood\phpChrome\Chrome; 
+use yasinstc\phpChrome\Chrome;
 
 
 $chrome=new Chrome('https://youtube.com','/usr/bin/google-chrome');
@@ -73,7 +69,7 @@ print "Pdf successfully generated :".$chrome->getPdf().PHP_EOL;
 
 ```php
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome('https://facebook.com','/usr/bin/google-chrome');
 $chrome->setOutputDirectory(__DIR__);
@@ -89,7 +85,7 @@ print "Pdf successfully generated :".$chrome->getPdf().PHP_EOL;
 
 ```php
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 
 $chrome=new Chrome('https://facebook.com','/usr/bin/google-chrome');
@@ -106,7 +102,7 @@ print "Image successfully generated :".$chrome->getScreenShot().PHP_EOL;
 
 ```php
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 
 $chrome=new Chrome('https://facebook.com','/usr/bin/google-chrome');
@@ -126,7 +122,7 @@ print "Image successfully generated :".$chrome->getScreenShot().PHP_EOL;
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null,'/usr/bin/google-chrome');
 $chrome->useHtmlFile(__DIR__.'/index.html');
@@ -141,7 +137,7 @@ print "Image successfully generated :".$chrome->getScreenShot().PHP_EOL;
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null,'/usr/bin/google-chrome');
 $chrome->useHtmlFile(__DIR__.'/index.html');
@@ -156,7 +152,7 @@ print "Pdf successfully generated :".$chrome->getPdf().PHP_EOL;
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null,'/usr/bin/google-chrome');
 $chrome->useHtml("<h2>I am test html</h2>");
@@ -171,7 +167,7 @@ print "screenShot successfully generated :".$chrome->getScreenShot().PHP_EOL;
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null,'/usr/bin/google-chrome');
 $chrome->useHtml("<h2>I am test html</h2>");
@@ -206,7 +202,7 @@ https://peter.sh/experiments/chromium-command-line-switches/
  ```
  [
     $argument1=>$value1,
-    $argument2=>$value2,  
+    $argument2=>$value2,
  ]
  ```
 if your argument doesn't has values like `--headless` you can pass empty value
@@ -219,26 +215,26 @@ if your argument doesn't has values like `--headless` you can pass empty value
 * `setChromeDirectory` the directory where google-chrome will save your profile
     it is not mandatory as google-chrome by default uses some directory but in need
     you can use this method to change that
-* `setUrl` to set the url to convert to pdf or to take screenshot    
+* `setUrl` to set the url to convert to pdf or to take screenshot
 
-* `useHtmlFile` to use the file instead of url to convert to pdf or to take screenshot    
+* `useHtmlFile` to use the file instead of url to convert to pdf or to take screenshot
 
-* `useHtml` to use the html code instead of url to convert to pdf or to take screenshot    
+* `useHtml` to use the html code instead of url to convert to pdf or to take screenshot
 
 * `setOutputDirectory` directory to save the output (screenshots and pdf) the
 default directory is temporary directory of your operating system
 
 * `getPdf` it receives optional path parameter to save the pdf file at
 if not provided it will save in output directory or temp directory of your
-operating system depending if you properly set up the output directory,  
-for this check `setOutputDirectory` option,  
+operating system depending if you properly set up the output directory,
+for this check `setOutputDirectory` option,
 it will convert your provided url to pdf and return the
 location of newly saved pdf
 
 * `getScreenShot` it receives optional path parameter to save the pdf file at
 if not provided it will save in output directory or temp directory of your
-operating system depending if you properly set up the output directory  
-for this check `setOutputDirectory` option,  
+operating system depending if you properly set up the output directory
+for this check `setOutputDirectory` option,
 it will take screenshot of your provided url and return the
 location of newly saved image
 
@@ -276,20 +272,17 @@ then try running `google-chrome` from shell to verify it's installation
 
 ## Installation of google-Chrome (Windows)
 ```
-Just Install updated version of chrome(after V 61.*)  
+Just Install updated version of chrome(after V 61.*)
 that-s it
 ```
 
-then try running `C:\Program Files (x86)\Google\Chrome\Application>chrome.exe --headless` from cmd terminal to verify it's installation  
+then try running `C:\Program Files (x86)\Google\Chrome\Application>chrome.exe --headless` from cmd terminal to verify it's installation
 
-> Note  the path of chrome directory can be different in your case  
+> Note  the path of chrome directory can be different in your case
 
 ## License
 The **PhpChromeToPdf** is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Contribution
-Thanks to all of the contributors ,  
+Thanks to all of the contributors ,
 Check [Contribution](CONTRIBUTING.md) for contribution rules
-
-## Author
-Dawood Ikhlaq and Open source community

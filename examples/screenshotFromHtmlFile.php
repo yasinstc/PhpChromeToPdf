@@ -2,7 +2,7 @@
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null, '/usr/bin/google-chrome');
 $chrome->useHtmlFile(__DIR__.'/index.html');

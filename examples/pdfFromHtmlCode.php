@@ -2,7 +2,7 @@
 
 include '../vendor/autoload.php';
 
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 
 $chrome=new Chrome(null, '/usr/bin/google-chrome');
 $chrome->useHtml("<h2>I am test Pdf</h2>");

@@ -1,11 +1,11 @@
 <?php
-use dawood\phpChrome\Chrome;
+use yasinstc\phpChrome\Chrome;
 use PHPUnit\Framework\TestCase;
 
 class ChromeTestSuite extends TestCase
 {
     protected $binaryPath = '/usr/bin/google-chrome';
-    
+
     public function testChromeConstructorProperlySettingValues()
     {
         $url = 'http://example.com';

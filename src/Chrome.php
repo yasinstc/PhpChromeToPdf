@@ -1,5 +1,5 @@
 <?php
-namespace dawood\phpChrome;
+namespace yasinstc\phpChrome;
 
 use Exception;
 use mikehaertl\shellcommand\Command;
@@ -135,8 +135,10 @@ class Chrome
         ];
 
         $allArguments = array_merge($printArray, $this->arguments);
-        if (!$this->executeChrome($allArguments)) {
-            throw new Exception('Some Error Occurred While Getting Pdf');
+        $executeChrome = $this->executeChrome($allArguments);
+
+        if (!$executeChrome->success) {
+            throw new Exception('Some Error Occurred While Getting Pdf (' . $executeChrome->data->msg . ')');
         }
 
         return $location;
@@ -162,8 +164,10 @@ class Chrome
         ];
 
         $allArguments = array_merge($printArray, $this->arguments);
-        if (!$this->executeChrome($allArguments)) {
-            throw new Exception('An error occured while getting the image');
+        $executeChrome = $this->executeChrome($allArguments);
+
+        if (!$executeChrome->success) {
+            throw new Exception('An error occured while getting the image (' . $executeChrome->data->msg . ')');
         }
 
         return $screenshotPath;
@@ -198,12 +202,17 @@ class Chrome
         $command->addArg($this->url, null);
 
         if (!$command->execute()) {
-            echo $command->getError() . PHP_EOL;
-            echo 'Exit code: ' . $command->getExitCode() . PHP_EOL;
-            return false;
+            return (object) [
+                'success' => false,
+                'data' => (object) [
+                    'msg' => $command->getError() . ', Exit code: ' . $command->getExitCode(),
+                ],
+            ];
         }
 
-        return true;
+        return (object) [
+            'success' => true,
+        ];
     }
 
     /**
